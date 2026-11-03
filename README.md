@@ -1,30 +1,36 @@
 # ArcPay
 
-A full-stack USDC payment app running on Arc Testnet. Send USDC, generate shareable payment request links, and browse your recent transfer history — all from a single mobile-friendly interface.
+A USDC payment app running on Arc Testnet. Send USDC, create shareable payment request links, and browse your recent transfer history from a single mobile-friendly interface.
 
 Built with [Arc Studio](https://studio.arc.io)
 
-## Tech Stack
+## Demo
 
-- React + TypeScript + Vite
-- wagmi v2 + ConnectKit (wallet connection)
-- viem (onchain reads and writes)
-- Framer Motion (tab transitions, sheet animations)
-- Tailwind CSS (Arc Light design tokens)
-- Arc Testnet (USDC is the native gas token — no ETH needed)
+Watch the walkthrough: [ArcPay demo on YouTube](https://youtu.be/OtvDTh8PONk)
+
+Live app: https://imaginative-toffee-b20ac4.netlify.app
 
 ## Features
 
-- **Send**: transfer USDC to any address with quick-amount chips, a Max button, and real-time transaction state
-- **Request**: generate a shareable payment link pre-filled with amount and memo; recipients open the link and pay in one click
-- **Activity**: live feed of the last 20 USDC transfers to/from your wallet, linked to ArcScan
+- **Send**: transfer USDC to any address with quick-amount chips, a Max button, and live transaction status.
+- **Request**: create a payment link with an optional amount and note. Anyone who opens it lands on the Send screen with the details pre-filled.
+- **Activity**: see your most recent USDC transfers in and out of your wallet, each linked to the block explorer.
+- **Balance**: your live USDC balance on Arc Testnet is always shown at the top.
+
+## Tech Stack
+
+- React, TypeScript, Vite
+- wagmi and ConnectKit for wallet connection
+- viem for onchain reads and writes
+- Tailwind CSS and Framer Motion for the interface
+- Arc Testnet, where USDC is also the gas token (no other token needed for fees)
 
 ## Development
 
 ### Prerequisites
 
-- [Bun](https://bun.sh) runtime
-- A browser wallet (MetaMask, Coinbase Wallet, or any injected provider)
+- [Bun](https://bun.sh)
+- A browser wallet (MetaMask, Coinbase Wallet, or any injected wallet)
 
 ### Install
 
@@ -32,13 +38,9 @@ Built with [Arc Studio](https://studio.arc.io)
 bun install
 ```
 
-### Environment Variables
+### Environment variables
 
-| Variable | Purpose |
-|---|---|
-| `RPC_PROXY_BASE_URL` | Arc Studio RPC proxy base URL (optional outside Arc Studio) |
-| `RPC_PROXY_TOKEN` | Arc Studio RPC proxy token (optional outside Arc Studio) |
-| `RPC_PROXY_CHAINS` | Comma-separated proxy-enabled chain keys (optional outside Arc Studio) |
+None.
 
 ### Run
 
@@ -49,19 +51,21 @@ bun run dev
 ### Build
 
 ```bash
-bun run build
+bunx vite build
 ```
 
-### Test & Lint
+The production build is written to `dist/` and can be hosted on any static host.
+
+### Lint and typecheck
 
 ```bash
 bun run check
 ```
 
-## Testing
+## Trying it out
 
-1. Connect a wallet in the preview.
-2. Use the **Get test USDC** button in the Arc Studio sidebar to fund your wallet with Arc Testnet USDC.
-3. Use the Send tab to transfer USDC to another address, or the Request tab to generate a payment link.
+1. Open the app and connect a wallet on Arc Testnet.
+2. Get test USDC for your wallet. Inside Arc Studio, use the **Get test USDC** button in the sidebar.
+3. Use **Send** to transfer USDC, or **Request** to create a payment link to share.
 
-Arc Testnet uses no real funds. The USDC here is testnet-only.
+Arc Testnet uses test funds only. No real money is involved.
